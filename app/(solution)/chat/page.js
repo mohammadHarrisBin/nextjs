@@ -30,6 +30,9 @@ export default function Component() {
   const [messages, setMessages] = useState([]);
 
   const handleAkiraGenerateResponse = async () => {
+    const userPrompt = userMessageTemplate(prompt);
+    setMessages((prev) => [...prev, userPrompt]);
+
     const akiraResponse = await AkiraGenerateResponse(prompt);
     setMessages((prev) => [...prev, akiraResponse]);
   };
@@ -101,7 +104,7 @@ export default function Component() {
           {messages && messages?.map((message, index) => (
             <div key={index}>
               <div className="flex items-start gap-4">
-                <Avatar className="w-8 h-8 border">
+                <Avatar className="w-8 h-8">
                   {message?.role === "user" ? (
                     <>
                       <AvatarImage src="/placeholder-user.jpg" alt="Image" />
