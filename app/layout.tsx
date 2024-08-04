@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter as FontSans } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+import { cn } from "@/lib/utils"
+import Link from "next/link";
+
+// const inter = Inter({ subsets: ["latin"] });
+
+const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +24,38 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable
+        )}>
+          
+          <header className="px-4 lg:px-6 h-14 flex items-center">
+        <Link href="/" className="flex items-center justify-center" prefetch={false}>
+          {/* <BotIcon className="h-6 w-6" /> */}
+          {/* <img
+                src="/images/fox.jfif"
+                alt="Akira"
+                className="sm:w-7 mr"
+                // className="mx-auto aspect-video overflow-hidden rounded-xl object-bottom sm:w-full lg:order-last lg:aspect-square w-full h-full"
+              /> */}
+          <span className="text-2xl font-bold text-[#E4A263]">Akira.</span>
+        </Link>
+        <nav className="ml-auto flex gap-4 sm:gap-6">
+          <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+            Features
+          </Link>
+          <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+            Pricing
+          </Link>
+          <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+            About
+          </Link>
+          <Link href="#" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
+            Contact
+          </Link>
+        </nav>
+      </header>
+          {children}</body>
     </html>
   );
 }
