@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+=======
+/**
+ * v0 by Vercel.
+ * @see https://v0.dev/t/fEr5Y5uZ2iE
+ * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
+ */
+>>>>>>> c7b9e07f4e070cd67856ba5b0caa5750427688ed
 "use client";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -30,12 +38,30 @@ export default function Component() {
   const [messages, setMessages] = useState([]);
 
   const handleAkiraGenerateResponse = async () => {
+<<<<<<< HEAD
+=======
+    // add to user messages first
+    // const userMessage = userMessageTemplate(prompt);
+    // setMessages((prev) => [...prev, userMessage]);
+
+    // add recent akira response
+>>>>>>> c7b9e07f4e070cd67856ba5b0caa5750427688ed
     const akiraResponse = await AkiraGenerateResponse(prompt);
     setMessages((prev) => [...prev, akiraResponse]);
   };
 
+<<<<<<< HEAD
   return (
     <div className="flex flex-col min-h-screen w-full bg-background">
+=======
+
+
+  return (
+    <div className="flex flex-col min-h-screen w-full bg-background">
+      {/* current prompt: {prompt}
+      <br />
+      messages: {JSON.stringify(messages)}; */}
+>>>>>>> c7b9e07f4e070cd67856ba5b0caa5750427688ed
       <header className="flex items-center justify-between border-b bg-background px-4 py-3 sm:px-6">
         <div className="flex items-center gap-4">
           <Link
@@ -97,6 +123,7 @@ export default function Component() {
         <div className="mx-auto max-w-2xl space-y-4">
           {!messages.length && (
             <h3 className="text-gray-400 text-center">Ask Akira a question to begin</h3>
+<<<<<<< HEAD
           )}
           {messages && messages?.map((message, index) => (
             <div key={index}>
@@ -166,6 +193,113 @@ export default function Component() {
           ))}
         </div>
       </div>
+=======
+          ) }
+          {messages && messages?.map((message)=> (
+            <>
+            
+            <div className="flex items-start gap-4">
+              <Avatar className="w-8 h-8 border">
+                {message?.role == 'user' ? (
+                    <>
+                                    <AvatarImage src="/placeholder-user.jpg" alt="Image" />
+                                    <AvatarFallback>YO</AvatarFallback>
+                    </>
+                ) : (
+                  
+              <AvatarImage src="/images/fox.jfif" alt="Image" />
+                
+                )}
+
+              </Avatar>
+              <div className="grid gap-1">
+              {message?.role == 'user' ? (
+                <div className="font-bold">You</div>
+
+              ):(
+                <div className="font-bold text-[#E4A263]">Akira</div>
+
+              )}
+
+                <div className={`prose text-muted-foreground ${message?.role == 'user' ? 'bg-[#d9d6d4]' : 'bg-[#E4A263]'}  bg-opacity-10 rounded-md p-4`}>
+                  <p>
+                    {message?.content[0]?.text}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+            {message?.role == 'assistant' && (
+                           <div className="ml-12">
+ 
+                           <div className="flex items-center gap-2 py-2">
+                             <Button
+                               variant="ghost"
+                               size="icon"
+                               className="w-4 h-4 hover:bg-transparent text-stone-400 hover:text-stone-900"
+                             >
+                               <ClipboardIcon className="w-4 h-4" />
+                               <span className="sr-only">Copy</span>
+                             </Button>
+                             <Button
+                               variant="ghost"
+                               size="icon"
+                               className="w-4 h-4 hover:bg-transparent text-stone-400 hover:text-stone-900"
+                             >
+                               <ThumbsUpIcon className="w-4 h-4" />
+                               <span className="sr-only">Upvote</span>
+                             </Button>
+                             <Button
+                               variant="ghost"
+                               size="icon"
+                               className="w-4 h-4 hover:bg-transparent text-stone-400 hover:text-stone-900"
+                             >
+                               <ThumbsDownIcon className="w-4 h-4" />
+                               <span className="sr-only">Downvote</span>
+                             </Button>
+                             <Button
+                               variant="ghost"
+                               size="icon"
+                               className="w-4 h-4 hover:bg-transparent text-stone-400 hover:text-stone-900"
+                             >
+                               <RefreshCcwIcon className="w-4 h-4" />
+                               <span className="sr-only">Regenerate</span>
+                             </Button>
+                           </div>
+                         </div>
+            )}
+            </>
+          ))}
+          
+            
+
+
+
+
+            
+              
+   
+            </div>
+          </div>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> c7b9e07f4e070cd67856ba5b0caa5750427688ed
         <div className="border-l bg-background px-4 py-6 sm:px-6">
           <div className="flex flex-col gap-6">
             <div>
@@ -299,8 +433,11 @@ export default function Component() {
   );
 }
 
+<<<<<<< HEAD
 // Icon components remain unchanged
 
+=======
+>>>>>>> c7b9e07f4e070cd67856ba5b0caa5750427688ed
 function ArrowUpIcon(props) {
   return (
     <svg
